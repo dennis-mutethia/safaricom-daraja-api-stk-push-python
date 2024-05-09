@@ -7,6 +7,7 @@ class App:
         self.amount = 99
         self.phone_numbers_csv = 'phone_numbers.csv'
         self.existing_numbers = []
+        self.operations = Operations()
     
     def read_existing_numbers(self):
         existing_numbers = []
@@ -51,7 +52,7 @@ class App:
     def send_stk_push(self, phone, amount):
         existing_numbers = self.read_existing_numbers()
         if phone not in existing_numbers:
-            response = Operations.lipa_na_mpesa_online(phone, amount)            
+            response = self.operations.lipa_na_mpesa_online(phone, amount)            
             response_description = response["ResponseDescription"]
             if 'Success.' not in response_description:
                 raise SystemExit

@@ -4,7 +4,7 @@ from config import Config
 
 class Operations:
     
-    def lipa_na_mpesa_online(phone, amount):
+    def lipa_na_mpesa_online(self, phone, amount):
         access_token = MpesaAccessToken.validated_mpesa_access_token
         headers = {"Authorization": f"Bearer {access_token}"}
         request = {
