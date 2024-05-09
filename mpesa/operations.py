@@ -1,4 +1,4 @@
-import requests
+import requests, json
 from mpesa.credentials import MpesaAccessToken, LipanaMpesaPassword
 from config import Config
 
@@ -23,4 +23,4 @@ class Operations:
 
         response = requests.post(Config.lnm_api_url, json=request, headers=headers)
         #result = json.loads(json.dumps(json.loads(response)))
-        return response
+        return json.loads(json.dumps(json.loads(response.content))) 
