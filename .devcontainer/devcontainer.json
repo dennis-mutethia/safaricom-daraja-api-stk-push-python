@@ -1,0 +1,18 @@
+{
+    "name": "stk-push Container",
+    "dockerFile": "Dockerfile",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-azuretools.vscode-docker",
+                "github.vscode-github-actions",
+                "ms-python.pylint",
+                "mechatroner.rainbow-csv",
+                "KevinRose.vsc-python-indent"
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux#": "/bin/bash"
+            }
+        }
+    }
+}
