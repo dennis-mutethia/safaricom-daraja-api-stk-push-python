@@ -5,7 +5,6 @@ from datetime import datetime
 import base64
 from config import Config
 
-
 class MpesaAccessToken:
     r = requests.get(Config.cred_api_url, auth=HTTPBasicAuth(Config.consumer_key, Config.consumer_secret))
     mpesa_access_token = json.loads(r.text)
