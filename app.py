@@ -3,7 +3,7 @@ from mpesa.operations import Operations
 
 class App:  
     def __init__(self):        
-        self.max_numbers = 1000
+        self.max_numbers = 1500
         self.amount = 99
         self.phone_numbers_csv = 'phone_numbers.csv'
         self.existing_numbers = []
