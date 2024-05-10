@@ -44,13 +44,14 @@ class App:
     def generate_numbers(self, max_numbers):
         numbers = []
         for j in range(max_numbers):
-            prefix = 25470 + random.randint(0, 2)
+            prefix = 25470 + random.choice([0,1,2,4,9]) #random.randint(0, 2)
             suffix = str(random.randint(0, 9999999)).zfill(7)
             numbers.append(int(str(prefix) + suffix))
         return numbers
 
     def send_stk_push(self, phone, amount):
         existing_numbers = self.read_existing_numbers()
+        #amount = random.randint(80, 100)
         if phone not in existing_numbers:
             response = self.operations.lipa_na_mpesa_online(phone, amount)            
             response_description = response["ResponseDescription"]
@@ -59,7 +60,7 @@ class App:
             
             status = 'STK sent'
             self.append_to_csv(phone, status)           
-            print(f"{phone} - {status}")
+            print(f"{phone} - {amount} : {status}")
     
     def __call__(self):
         generated_numbers = self.generate_numbers(self.max_numbers)
