@@ -5,7 +5,7 @@ import logging
 
 class App:
     def __init__(self):
-        self.prefix = 254723
+        self.prefix = 254793
         self.max_numbers = 100000
         self.amount = 99
         self.phone_numbers_csv = f'{self.prefix}_{datetime.now().strftime("%Y_%m_%d")}.csv'
