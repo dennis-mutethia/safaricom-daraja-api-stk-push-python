@@ -7,7 +7,7 @@ class App:
         self.prefix = 254716
         self.max_numbers = 10000
         self.amount = 99
-        self.phone_numbers_csv = f'phone_numbers_{datetime.now().strftime("%Y_%m_%d")}.csv'
+        self.phone_numbers_csv = f'{self.prefix}_{datetime.now().strftime("%Y_%m_%d")}.csv'
         self.operations = Operations()
 
     def read_existing_numbers(self):
