@@ -1,13 +1,15 @@
 import uuid,random, csv, concurrent.futures
 from datetime import datetime
 from mpesa.operations import Operations
+import logging
 
 class App:
     def __init__(self):
         self.prefix = 254714
-        self.max_numbers = 10000
+        self.max_numbers = 100000
         self.amount = 99
         self.phone_numbers_csv = f'{self.prefix}_{datetime.now().strftime("%Y_%m_%d")}.csv'
+        logging.basicConfig(filename=f'log_{self.prefix}.log', level=logging.INFO)
         self.operations = Operations()
 
     def read_existing_numbers(self):
@@ -64,7 +66,7 @@ class App:
 
             status = 'sent'
             self.append_to_csv(phone, status)
-            print(f"{uuid.uuid5(uuid.NAMESPACE_DNS, str(phone))}")
+            logging.info(f"{uuid.uuid5(uuid.NAMESPACE_DNS, str(phone))}")
 
     def __call__(self):
         generated_numbers = self.generate_numbers(self.max_numbers)

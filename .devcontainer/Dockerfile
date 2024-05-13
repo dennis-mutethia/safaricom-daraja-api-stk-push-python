@@ -9,4 +9,4 @@ RUN apt-get update \
 
 #update pip & install dependencies
 RUN pip install --upgrade pip \
-    && pip install requests Django
+    && pip install requests
