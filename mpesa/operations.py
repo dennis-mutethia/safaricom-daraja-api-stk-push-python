@@ -1,6 +1,6 @@
 import requests, json
 from mpesa.credentials import MpesaAccessToken, LipanaMpesaPassword
-from config import Config
+from mpesa.config import Config
 
 class Operations:
     def __init__(self):
