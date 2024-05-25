@@ -1,8 +1,8 @@
 name: run app.py
 
-on:
-  schedule:
-    - cron: '*/10 6-19 * * *'  # This will run the job every hour from 6 am to 7 pm GMT
+#on:
+#  schedule:
+#    - cron: '*/10 6-19 * * *'  # This will run the job every hour from 6 am to 7 pm GMT
 
 jobs:
   execute:
