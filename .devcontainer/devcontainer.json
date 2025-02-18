@@ -1,6 +1,6 @@
 {
-    "name": "stk-push Container",
-    "dockerFile": "Dockerfile",
+    "name": "daraja-api-stk-push-container",
+    "dockerFile": "../Dockerfile",
     "customizations": {
         "vscode": {
             "extensions": [

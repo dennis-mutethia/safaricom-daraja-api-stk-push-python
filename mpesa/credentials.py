@@ -1,21 +1,31 @@
-import requests
-import json
-from requests.auth import HTTPBasicAuth
+import base64, json, requests
 from datetime import datetime
-import base64
+from requests.auth import HTTPBasicAuth
+
 from mpesa.config import Config
 
-class MpesaAccessToken:
-    r = requests.get(Config.cred_api_url, auth=HTTPBasicAuth(Config.consumer_key, Config.consumer_secret))
-    print(str(r))
-    mpesa_access_token = json.loads(r.text)
-    validated_mpesa_access_token = mpesa_access_token['access_token']
-
-
-class LipanaMpesaPassword:
-    lipa_time = datetime.now().strftime('%Y%m%d%H%M%S')    
-    OffSetValue = '0'
+class Credentials:
+    def __init__(self):
+        pass
+    
+    def get_access_token(self):
+        try:
+            r = requests.get(Config.cred_api_url, auth=HTTPBasicAuth(Config.consumer_key, Config.consumer_secret))
+            mpesa_access_token = json.loads(r.text)
+            return mpesa_access_token['access_token']
+        except Exception as e:
+            print(e)
+            return None
+    
+    def get_password(self):
+        lipa_time = datetime.now().strftime('%Y%m%d%H%M%S')
+        try:                 
+            data_to_encode = Config.business_short_code + Config.passkey + lipa_time
+            online_password = base64.b64encode(data_to_encode.encode())
+            decode_password = online_password.decode('utf-8')
+            
+            return lipa_time, decode_password
+        except Exception as e:
+            print(e)
+            return lipa_time, None
         
-    data_to_encode = Config.business_short_code + Config.passkey + lipa_time
-    online_password = base64.b64encode(data_to_encode.encode())
-    decode_password = online_password.decode('utf-8')
